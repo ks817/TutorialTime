@@ -8,9 +8,9 @@ def askInput():
     timearray = []
 
     #input function always returns string so convert to int
-    hour = int(input("\nPlease input the Hours for the tutorial or enter 0 to quit.\n"))
+    hour = int(input("\nPlease input the Hours for the tutorial or enter -1 to quit.\n"))
 
-    if hour == 0:
+    if hour == -1:
         return 0
     else:
         minute = float(input("Minutes: "))
@@ -18,7 +18,7 @@ def askInput():
         getHour = converttohour(hour,minute,sec)
         dt = doubleTime(getHour)
         timearray.append(dt)
-    
+
     return timearray
 
 def converttohour(hour,minute,sec):
@@ -36,6 +36,7 @@ def doubleTime(regTime):
 def main():
     #calculate tutorial hours
 
+
     index = 0
     total = 0
 
@@ -44,8 +45,9 @@ def main():
     while hours != 0 and len(hours) > 0:
         total += hours[index]
         hours = askInput()
-    
-    print("This tutorial will take you", total, "hours to finish\n")
+
+    calcmin = float(total % 1) / 60
+    print("This tutorial will take you", int(total), "hours and", calcmin, "minutes to finish\n")
     print("goodbye")
 
     return 0
